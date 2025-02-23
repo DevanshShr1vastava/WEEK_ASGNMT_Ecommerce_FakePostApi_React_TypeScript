@@ -1,6 +1,6 @@
 import axios from "axios";
 
-interface ICartProducts { 
+export interface ICartProducts { 
     productId : number;
     quantity : number;
 }
@@ -17,18 +17,19 @@ const instance = axios.create({
     baseURL:"https://fakestoreapi.com/carts"
 })
 
-export const getUserCart = async(userId : number)=>{
+export const getUserCart = async(userId : number):Promise<ICartData[]>=>{
     try{
         const response = await instance.get(`/user/${userId}`);
         const cartData = await response.data;
-        console.log(cartData);
+        return cartData;
     }
     catch(error){
         console.error(error);
+        return [];
     }
 }
 
-export const addToCart = async(userId : number, prodData : ICartProducts[]) =>{
+export const addToCart = async(userId : number, prodData : ICartData) =>{
     try{
         const response = await instance.post('/',{
             userId,
@@ -44,7 +45,7 @@ export const addToCart = async(userId : number, prodData : ICartProducts[]) =>{
     }
 }
 
-export const updateCart = async(userId:number , prodData : ICartProducts[])=>{
+export const updateCart = async(userId:number , prodData : ICartData)=>{
     try{
         const response = await instance.patch(`/${userId}`,{
             userId,

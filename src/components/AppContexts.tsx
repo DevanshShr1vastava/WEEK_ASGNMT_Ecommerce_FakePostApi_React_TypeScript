@@ -3,12 +3,19 @@ import { IProductData } from "../utils/ProductAPI";
 import { ICartData } from "../utils/CartAPI";
 import { IUserData } from "../utils/Authentication";
 
-interface IAppContext {
-    user : IUserData;
-    isAdmin : boolean;
-    filteredProductData : IProductData[];
-    allProductData : IProductData[];
-    cartData : ICartData
-}
+type allProductType = IProductData[];
+type filteredProductType = IProductData[];
+type isAdminType = boolean;
+type cartDataType = ICartData;
+type userType = IUserData;
 
-export const AppContext = createContext<IAppContext | undefined>(undefined);
+export const UserContext = createContext<userType | undefined>(undefined);
+
+export const AllProductContext = createContext<allProductType | undefined>(undefined);
+
+export const FilteredProductContext = createContext<filteredProductType | undefined>(undefined);
+
+export const isAdminContext = createContext<isAdminType | boolean>(false);
+
+export const CartContext = createContext<cartDataType | undefined>(undefined);
+

@@ -18,14 +18,15 @@ const instance = axios.create({
     baseURL:"https://fakestoreapi.com/products"
 });
 
-export const getAllProducts = async()=>{
+export const getAllProducts = async():Promise<IProductData[]>=>{
     try{
         const response = await instance.get('/');
         const productData = await response.data;
-        console.log(productData);
+        return productData;
     }
     catch(error){
         console.error(error);
+        return [];
     }
 }
 
