@@ -1,5 +1,5 @@
 import { Container } from "react-bootstrap";
-import { Routes,Route } from "react-router-dom";
+import {  Routes,Route,BrowserRouter as Router, Navigate } from "react-router-dom";
 import NavGlobal from "./components/NavGlobal";
 import UserAuth from "./components/UserAuth";
 import Login from "./components/Login";
@@ -8,55 +8,90 @@ import AdminAuth from "./components/AdminAuth";
 import HomeAdmin from "./components/HomeAdmin";
 import AddProduct from "./components/AddProduct";
 import NotFound from "./components/NotFound";
-import { useContext, useEffect, useReducer, useState } from "react";
+import { useEffect, useReducer, useState } from "react";
 import { getAllProducts, IProductData } from "./utils/ProductAPI";
-import { AllProductContext, CartContext, FilteredProductContext, isAdminContext, UserContext } from "./components/AppContexts";
+import { AllProductContext, CartContext } from "./components/AppContexts";
 import { prodReducer } from "./utils/ProductReducer";
 import { cartReducer } from "./utils/CartReducer";
 import { getUserCart } from "./utils/CartAPI";
+import Logout from "./components/Logout";
 
 function App() {
   const [product,prodDispatch] = useReducer(prodReducer,[]);
-  const [cart,dispatch] = useReducer(cartReducer,[]);
+  const [cart,cartDispatch] = useReducer(cartReducer,[]);
 
   const [filteredProduct,setfilteredProduct] = useState<IProductData[]>(product);
-  const loggedIn = useContext(UserContext)
-  const admin = useContext(isAdminContext)
-  const [isLoggedIn,setIsLoggedIn] = useState(loggedIn);
-  const [isAdmin,setIsAdmin] = useState(admin);
+
+  const [isLoggedIn,setIsLoggedIn] = useState<boolean>(false);
+  const [isAdmin,setIsAdmin] = useState<boolean>(false)
+
   
+
+  const handleLogin = (token:string | null ,username:string)=>{
+      if(token!==null){
+          setIsLoggedIn(true);
+          if(username === "donero"){
+            setIsAdmin(true);
+          }
+      }
+  }
+
+  const handleLogOut = ()=>{
+    setIsAdmin(false);
+    setIsLoggedIn(false);
+  }
+
   useEffect(()=>{
     const fetchData = async()=>{
-      const productData = await getAllProducts();
-      const cartData = await getUserCart(1);
-      prodDispatch({type:"AddProductList",productData});
-    }
+      try{
+        const productData = await getAllProducts();
+        const cartData = await getUserCart(1);
+
+        prodDispatch({type:"AddProductList",productData});
+        cartDispatch({type:"GetCart",cartData});
+      }
+      catch(error){
+        console.error("Error fetching data : ",error);
+      }
+    };
+
     fetchData();
   },[]);
 
+  useEffect(()=>{
+    setfilteredProduct(product);
+  },[product]);
+
   return (
     <Container>
-      <NavGlobal />
-      <Routes>
-        <Route element={<UserAuth isUserAuth={true} />}>
-          <Route path="/login" element={<Login />} />
-          <Route path="/" element={<Home />} />
-          <Route element={<AdminAuth isAdmin={true} />}>
-            <Route path="/admin" element={<HomeAdmin />} />
-          </Route>
-          <Route path='/add' element={<AddProduct />} />
-        </Route>
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-    <UserContext.Provider value={isLoggedIn}>
-      <isAdminContext.Provider value={isAdmin}>
-        <AllProductContext.Provider value={filteredProduct}>
-          <CartContext.Provider value={}>
+      <Router>
+        <NavGlobal />
 
+        <AllProductContext.Provider value={filteredProduct}>
+          <CartContext.Provider value={cart}>
+            <Routes>
+              
+              <Route path="/login" element={<Login handleLogin={handleLogin}/>} />
+              <Route path = "/logout" element={<Logout handleLogout={handleLogOut} />} />
+
+              <Route path="/" element={isLoggedIn ? <Home /> : <Navigate to="/login" replace />} />
+
+              
+              <Route element={<UserAuth isUserAuth={isLoggedIn} />}>
+                <Route path="/add" element={<AddProduct />} />
+
+                <Route element={<AdminAuth isAdmin={isAdmin} />}>
+                  <Route path="/admin" element={<HomeAdmin />} />
+                </Route>
+
+              </Route>
+
+              
+              <Route path="*" element={<NotFound />} />
+            </Routes>
           </CartContext.Provider>
         </AllProductContext.Provider>
-      </isAdminContext.Provider>
-    </UserContext.Provider>
+      </Router>
     </Container>
   )
 }

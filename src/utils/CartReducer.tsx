@@ -18,7 +18,6 @@ interface ICartDelete{
 
 interface ICartGet {
     type : "GetCart";
-    userId : number;
     cartData : ICartData;
 }
 

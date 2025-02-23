@@ -17,7 +17,7 @@ const instance = axios.create({
     baseURL:"https://fakestoreapi.com/carts"
 })
 
-export const getUserCart = async(userId : number):Promise<ICartData[]>=>{
+export const getUserCart = async(userId : number):Promise<ICartData>=>{
     try{
         const response = await instance.get(`/user/${userId}`);
         const cartData = await response.data;
@@ -25,7 +25,13 @@ export const getUserCart = async(userId : number):Promise<ICartData[]>=>{
     }
     catch(error){
         console.error(error);
-        return [];
+        return {
+            id:0,
+            userId:1,
+            date : new Date(),
+            products : [],
+            __v : 0
+        };
     }
 }
 

@@ -26,28 +26,17 @@ export interface IUserData {
     phone : string;
 }
 
-export const getAllUsers = async()=>{
-    try{
-        const response = await instance.get('/');
-        const userData = await response.data;
-        const responseStatus =response.status;
 
-        console.log(userData, responseStatus);
-    }
-    catch(error){
-        console.error(error);
-    }
-}
-
-export const getSingleUser = async(userId : number) =>{
+export const getSingleUser = async(userId : number): Promise<IUserData|undefined> =>{
     try{
         const response = await instance.get(`/${userId}`);
         const userData = await response.data;
-
         console.log(userData);
+        return userData;
     }
     catch(error){
         console.error(error);
+        return undefined;
     }
 }
 
@@ -62,6 +51,7 @@ export const loginUser = async(username : string, password : string)=>{
         const responseStatus = response.status;
         
         console.log(responseData, responseStatus);
+        return responseData;
     }
     catch(error){
         console.error(error);
