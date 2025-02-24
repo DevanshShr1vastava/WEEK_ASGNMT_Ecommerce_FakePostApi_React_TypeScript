@@ -46,7 +46,7 @@ const Home = ({categoryData}:IHomeProps) => {
   }
 
   const handleAddToCart = (userId: number, product: ICartProducts) => {
-    if(cart.products.find((prod)=>prod.productId===product.productId)){
+    if(cart.products?.find((prod)=>prod.productId===product.productId)){
       handleUpdateCart(1, { productId: product.productId, quantity: product.quantity + 1 })
     }
     else{
