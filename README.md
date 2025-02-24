@@ -11,34 +11,40 @@
 
 ##### Login 
 
-![ECommerceStuff_LoginStuff](https://github.com/user-attachments/assets/7273903f-e088-4ec8-be6e-8080a39180c6)
+![ECommerceStuff_LoginStuff-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/46e30c42-cfa5-4642-b11b-2bb53f8ef53a)
 
 ##### UI Demo Category Filter Home regular user
 
-![ECommerceStuff_UI_Category_Home](https://github.com/user-attachments/assets/1ae1831d-bc54-4f5b-9b91-8471a73e0e81)
+![ECommerceStuff_UI_Category_Home-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/4f30af44-e3ef-49cd-b7ec-bdcf405dc3d6)
+
 
 #### UI Demo Category Filter Admin Page 
 
-![ECommerceStuff_UI_Category_HomeAdmin](https://github.com/user-attachments/assets/8e1ac650-cfac-4bd8-92bb-2123a949ed3f)
+![ECommerceStuff_UI_Category_HomeAdmin-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/7b3484e0-7998-4447-8ec0-9c7b8d93be18)
+
 
 #### UI Demo Home Page Product Show
 
-![ECommerceStuff_UI_ShowProduct](https://github.com/user-attachments/assets/84ef1810-b488-45de-b542-9aec1f46634a)
+![ECommerceStuff_UI_ShowProduct-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/c5d47c05-fc66-47af-874f-477a21bf4c06)
+
 
 #### UI Demo Cart Manipulation
 
-![ECommerceStuff_UI_Cart_manipulation](https://github.com/user-attachments/assets/fce90887-8985-4dad-b95b-73be9ef3ade2)
+![ECommerceStuff_UI_Cart_manipulation-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/ea6acc5a-c7e6-4258-8466-7534a8e0b8b4)
 
-#### UI DEmo Admin Edit Products
 
-![ECommerceStuff_Admin_Edit](https://github.com/user-attachments/assets/c4935ce4-f762-4fb4-9878-9ab242a19abf)
+#### UI Demo Admin Edit Products
+
+![ECommerceStuff_Admin_Edit-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/ec24fb31-70dd-4182-b378-94b1932514b9)
+
 
 #### UI Demo Admin Delete Products
 
-![ECommerceStuff_admin_Delete](https://github.com/user-attachments/assets/c7611128-412a-4bc4-862c-184162f09825)
+![ECommerceStuff_admin_Delete-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/bc520a09-84fa-4849-bd07-9b1a5701b8c0)
+
 
 #### UI Demo Admin Add products
 
-![ECommerceStuff_Admin_Add_product](https://github.com/user-attachments/assets/800e4775-e829-4b89-bed7-62af1979a3c3)
+![ECommerceStuff_Admin_Add_product-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/3a3409bb-017d-49ac-8d17-ac42f03ffcfb)
 
 
