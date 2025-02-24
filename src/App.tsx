@@ -9,7 +9,7 @@ import HomeAdmin from "./components/HomeAdmin";
 import AddProduct from "./components/AddProduct";
 import NotFound from "./components/NotFound";
 import { useEffect, useReducer, useState } from "react";
-import { getAllProducts, IProductData } from "./utils/ProductAPI";
+import { getAllProducts } from "./utils/ProductAPI";
 import { AllProductContext, CartContext } from "./components/AppContexts";
 import { prodReducer } from "./utils/ProductReducer";
 import { cartReducer } from "./utils/CartReducer";
@@ -17,15 +17,18 @@ import { getUserCart } from "./utils/CartAPI";
 import Logout from "./components/Logout";
 
 function App() {
-  const [product,prodDispatch] = useReducer(prodReducer,[]);
-  const [cart,cartDispatch] = useReducer(cartReducer,[]);
+  const [products,productDispatch] = useReducer(prodReducer,[]);
 
-  const [filteredProduct,setfilteredProduct] = useState<IProductData[]>(product);
+  const [cart,cartDispatch] = useReducer(cartReducer,{
+    id:0,
+    userId:1,
+    date : new Date(),
+    products : [],
+    __v : 0
+});
 
   const [isLoggedIn,setIsLoggedIn] = useState<boolean>(false);
   const [isAdmin,setIsAdmin] = useState<boolean>(false)
-
-  
 
   const handleLogin = (token:string | null ,username:string)=>{
       if(token!==null){
@@ -47,7 +50,7 @@ function App() {
         const productData = await getAllProducts();
         const cartData = await getUserCart(1);
 
-        prodDispatch({type:"AddProductList",productData});
+        productDispatch({type:"AddProductList",productData});
         cartDispatch({type:"GetCart",cartData});
       }
       catch(error){
@@ -58,17 +61,13 @@ function App() {
     fetchData();
   },[]);
 
-  useEffect(()=>{
-    setfilteredProduct(product);
-  },[product]);
-
   return (
-    <Container>
+    <Container fluid>
       <Router>
         <NavGlobal />
 
-        <AllProductContext.Provider value={filteredProduct}>
-          <CartContext.Provider value={cart}>
+        <AllProductContext.Provider value={{products, productDispatch}}>
+          <CartContext.Provider value={{ cart, cartDispatch }}>
             <Routes>
               
               <Route path="/login" element={<Login handleLogin={handleLogin}/>} />

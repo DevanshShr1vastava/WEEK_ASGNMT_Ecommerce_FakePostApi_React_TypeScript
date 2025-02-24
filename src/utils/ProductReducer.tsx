@@ -20,7 +20,7 @@ interface IProductList{
     productData : IProductData[];
 }
 
-type ActionType = IProductAdd | IProductDelete | IProductUpdate | IProductList;
+export type ActionType = IProductAdd | IProductDelete | IProductUpdate | IProductList;
 
 export const prodReducer = (state : IProductData[], action : ActionType):IProductData[] =>{
     switch(action.type){

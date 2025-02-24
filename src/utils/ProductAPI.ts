@@ -1,9 +1,5 @@
 import axios from "axios"
 
-type TRating ={
-    rate : string;
-}
-
 export interface IProductData {
     title: string;
     id:number;
@@ -11,7 +7,9 @@ export interface IProductData {
     image: string;
     category : string;
     price : number;
-    rating : TRating;
+    rating : {
+        rate : string;
+    };
 }
 
 const instance = axios.create({
@@ -35,6 +33,7 @@ export const getCategories = async()=>{
         const response = await instance.get('/categories');
         const categoryData = await response.data;
         console.log(categoryData);
+        return categoryData;
     }
     catch(error){
         console.error(error)

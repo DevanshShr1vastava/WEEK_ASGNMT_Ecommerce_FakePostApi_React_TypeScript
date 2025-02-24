@@ -35,7 +35,7 @@ export const getUserCart = async(userId : number):Promise<ICartData>=>{
     }
 }
 
-export const addToCart = async(userId : number, prodData : ICartData) =>{
+export const addToCart = async(userId : number, prodData : ICartProducts) =>{
     try{
         const response = await instance.post('/',{
             userId,
@@ -51,7 +51,7 @@ export const addToCart = async(userId : number, prodData : ICartData) =>{
     }
 }
 
-export const updateCart = async(userId:number , prodData : ICartData)=>{
+export const updateCart = async(userId:number , prodData : ICartProducts)=>{
     try{
         const response = await instance.patch(`/${userId}`,{
             userId,
