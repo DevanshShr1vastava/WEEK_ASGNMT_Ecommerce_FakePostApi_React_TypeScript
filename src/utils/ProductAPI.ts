@@ -40,16 +40,6 @@ export const getCategories = async()=>{
     }
 }
 
-export const getProductByCategory = async(category:string)=>{
-    try{
-        const response = await instance.get(`/category/${category}`);
-        const categoryProductData = await response.data;
-        console.log(categoryProductData);
-    }
-    catch(error){
-        console.error(error);
-    }
-}
 
 export const addNewProduct = async(newProdData : IProductData) =>{
     try{
@@ -58,6 +48,7 @@ export const addNewProduct = async(newProdData : IProductData) =>{
         const postStatus = response.status;
 
         console.log(postData, postStatus);
+        return response.data;
     }
     catch(error){
         console.error(error);
@@ -71,6 +62,7 @@ export const updateProduct = async(updatedData : IProductData) =>{
         const updateStatus = response.status;
 
         console.log(updateResponse, updateStatus);
+        return response.data;
     }
     catch(error){
         console.error(error);
@@ -85,6 +77,7 @@ export const deleteProduct = async(productId : number) =>{
         const responseStatus = response.status;
 
         console.log(responseData, responseStatus);
+        return response.data;
     }
     catch(error){
         console.error(error);

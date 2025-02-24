@@ -1,11 +1,13 @@
 import { useContext, useEffect, useState } from "react";
 import { AllProductContext } from "./AppContexts";
-import { getCategories } from "../utils/ProductAPI";
 import { Container, Dropdown, Table } from "react-bootstrap";
 import AdminRowComponent from "./AdminRowComponent";
 
+interface IAdminProps {
+  categoryData : string[];
+}
 
-const HomeAdmin = () => {
+const HomeAdmin = ({categoryData}:IAdminProps) => {
   const productContext = useContext(AllProductContext);
 
   const {products,productDispatch} = productContext;
@@ -17,11 +19,7 @@ const HomeAdmin = () => {
   const categorizedProduct = selectedCategory?products?.filter((product)=>product.category === selectedCategory) : products;
 
   useEffect(()=>{
-    const fetchCategory = async()=>{
-      const categoryData = await getCategories();
-      setCategories(categoryData);
-    };
-    fetchCategory();
+    setCategories(categoryData)
   },[]);
 
   return (

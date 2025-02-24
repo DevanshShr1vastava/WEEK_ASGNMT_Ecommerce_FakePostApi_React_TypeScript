@@ -1,13 +1,15 @@
 import { useContext, useEffect, useState } from "react";
 import { AllProductContext, CartContext } from "./AppContexts";
 import { Button, Card, Col, Container, Dropdown, ListGroup, Modal, Row } from "react-bootstrap";
-import { getCategories, IProductData } from "../utils/ProductAPI";
+import { IProductData } from "../utils/ProductAPI";
 
 import { ICartProducts } from "../utils/CartAPI";
 
+interface IHomeProps{
+  categoryData : string[];
+}
 
-
-const Home = () => {
+const Home = ({categoryData}:IHomeProps) => {
   const productContext = useContext(AllProductContext);
   const cartContext = useContext(CartContext) ?? { cart: { products: [] }, cartDispatch: () => {} };
 
@@ -43,7 +45,6 @@ const Home = () => {
 
   }
 
-
   const handleAddToCart = (userId: number, product: ICartProducts) => {
     if(cart.products.find((prod)=>prod.productId===product.productId)){
       handleUpdateCart(1, { productId: product.productId, quantity: product.quantity + 1 })
@@ -66,11 +67,7 @@ const Home = () => {
   };
 
   useEffect(() => {
-    const fetchCategory = async () => {
-      const categoryData = await getCategories();
-      setCategories(categoryData);
-    };
-    fetchCategory();
+    setCategories(categoryData);
   }, []);
 
   return (

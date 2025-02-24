@@ -1,13 +1,15 @@
 import { useContext, useEffect, useState } from "react";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
-import { getCategories, IProductData } from "../utils/ProductAPI";
+import {  IProductData } from "../utils/ProductAPI";
 import { AllProductContext } from "./AppContexts";
 import { useNavigate } from "react-router-dom";
 
+interface IAddProductsProps{
+  categoryData : string[];
+}
 
 
-
-const AddProduct = () => {
+const AddProduct = ({categoryData}:IAddProductsProps) => {
   const productContext = useContext(AllProductContext);
   const {products, productDispatch} = productContext;
   const defaultState = {
@@ -24,11 +26,7 @@ const AddProduct = () => {
   const [formData, setFormData] = useState<IProductData>(defaultState);
   const [categories,setCategories] = useState<string[]>([]);
   useEffect(()=>{
-    const fetchCategory = async()=>{
-      const categoryData = await getCategories();
-      setCategories(categoryData);
-    };
-    fetchCategory();
+    setCategories(categoryData);
   },[]);
   
   const navigate=useNavigate();
