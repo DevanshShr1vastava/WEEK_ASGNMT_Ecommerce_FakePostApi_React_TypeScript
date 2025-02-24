@@ -123,11 +123,12 @@ const Home = ({categoryData}:IHomeProps) => {
                     <Card.Text>${product.price}</Card.Text>
                     <Button
                       variant="success"
+                      className = "mx-3"
                       onClick={() => handleAddToCart(1, { productId: product.id, quantity: 1 })}
                     >
                       Add to Cart
                     </Button>
-                    <button className="btn btn-warning" onClick={()=>showModalProduct(product.id)}>Show Details</button>
+                    <button className="btn btn-warning mx-3" onClick={()=>showModalProduct(product.id)}>Show Details</button>
                   </Card.Body>
                 </Card>
               </Col>
@@ -156,6 +157,7 @@ const Home = ({categoryData}:IHomeProps) => {
                       <Button
                         variant="outline-primary"
                         size="sm"
+                        className="mx-1 mt-1"
                         onClick={() => handleUpdateCart(1, { productId: item.productId, quantity: item.quantity + 1 })}
                       >
                         +
@@ -163,14 +165,18 @@ const Home = ({categoryData}:IHomeProps) => {
                       <Button
                         variant="outline-secondary"
                         size="sm"
+                        className="mx-1 mt-1"
                         disabled={item.quantity <= 1}
                         onClick={() => handleUpdateCart(1, { productId: item.productId, quantity: item.quantity - 1 })}
                       >
                         -
                       </Button>
+                      <br />
+                      <br />
                       <Button
                         variant="outline-danger"
                         size="sm"
+                        className="mx-1"
                         onClick={() => handleRemoveFromCart(item.productId)}
                       >
                         Remove

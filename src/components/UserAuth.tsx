@@ -7,7 +7,7 @@ interface IUserAuth {
 const UserAuth = ({isUserAuth}:IUserAuth) => {
   return (
     <>
-        {isUserAuth?<Outlet />:<Navigate to='/login' />};
+        {isUserAuth?<Outlet />:<Navigate to='/login' />}
     </>
   );
 };

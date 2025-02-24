@@ -42,15 +42,11 @@ export const getSingleUser = async(userId : number): Promise<IUserData|undefined
 
 export const loginUser = async(username : string, password : string)=>{
     try{
-
         const response = await axios.post('https://fakestoreapi.com/auth/login',{
             username,
             password
         });
-        const responseData = await response.data;
-        const responseStatus = response.status;
-        
-        console.log(responseData, responseStatus);
+        const responseData = await response.data;        
         return responseData;
     }
     catch(error){

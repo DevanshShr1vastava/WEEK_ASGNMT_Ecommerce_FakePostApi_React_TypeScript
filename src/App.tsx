@@ -38,6 +38,9 @@ function App() {
             setIsAdmin(true);
           }
       }
+      else{
+        alert("Invalid credentials");
+      }
   }
 
   const handleLogOut = ()=>{
@@ -92,10 +95,10 @@ function App() {
 
               
               <Route element={<UserAuth isUserAuth={isLoggedIn} />}>
-                <Route path="/add" element={<AddProduct categoryData = {categoryData}/>} />
 
                 <Route element={<AdminAuth isAdmin={isAdmin} />}>
                   <Route path="/admin" element={<HomeAdmin categoryData = {categoryData}/>} />
+                <Route path="/add" element={<AddProduct categoryData = {categoryData}/>} />
                 </Route>
 
               </Route>

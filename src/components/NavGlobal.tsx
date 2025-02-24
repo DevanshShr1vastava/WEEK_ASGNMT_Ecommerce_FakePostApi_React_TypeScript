@@ -11,7 +11,7 @@ const NavGlobal = () => {
       </nav>
     </>
 
-  );
-};
+  )
+}
 
 export default NavGlobal;

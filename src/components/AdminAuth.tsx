@@ -7,7 +7,7 @@ interface IAdminAuth {
 const AdminAuth = ({isAdmin}:IAdminAuth) => {
   return <>
     {isAdmin?<Outlet />:<Navigate to='/' />}
-  </>;
+  </>
 };
 
 export default AdminAuth;
