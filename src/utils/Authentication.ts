@@ -45,11 +45,13 @@ export const loginUser = async(username : string, password : string)=>{
         const response = await axios.post('https://fakestoreapi.com/auth/login',{
             username,
             password
+        },{
+            headers : {"Content-Type":"application/json"}
         });
         const responseData = await response.data;        
         return responseData;
     }
-    catch(error){
-        console.error(error);
-    }
+    catch (error) {
+        throw new Error("Invalid credentials")
+      }
 }

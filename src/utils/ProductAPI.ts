@@ -41,7 +41,7 @@ export const getCategories = async()=>{
 }
 
 
-export const addNewProduct = async(newProdData : IProductData) =>{
+export const addNewProduct = async(newProdData : IProductData):Promise<IProductData> =>{
     try{
         const response = await instance.post('/',{newProdData});
         const postData = await response.data;
@@ -52,6 +52,17 @@ export const addNewProduct = async(newProdData : IProductData) =>{
     }
     catch(error){
         console.error(error);
+        return {
+            title: "",
+            id:0,
+            description : "",
+            image: "",
+            category : "",
+            price : 0,
+            rating : {
+                rate : "",
+            }
+        }
     }
 }
 

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { loginUser } from "../utils/Authentication";
 import { useNavigate } from "react-router-dom";
+import { useMutation } from "@tanstack/react-query";
 
 interface IFormSubmit {
   handleLogin : (token:string, username:string)=>void;
@@ -10,23 +11,22 @@ const Login = ({handleLogin}:IFormSubmit) => {
   
   const [formData,setFormData] = useState<{username : string, password: string}>({username: "",password : ""});
   const navigate = useNavigate();
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    
-    try {
-      const loginResponse = await loginUser(formData.username, formData.password);
-  
-      if (!loginResponse || !loginResponse.token) {
-        alert("Invalid username or password");
-        return;
-      }
-  
-      handleLogin(loginResponse.token, formData.username);
+
+  const { mutate } = useMutation({
+    mutationFn : ()=>loginUser(formData.username, formData.password),
+    retry : false,
+    onSuccess:(data)=>{
+      handleLogin(data.token, formData.username);
       navigate('/');
-    } catch (error) {
-      console.error(error);
-      alert("An unexpected error occurred. Please try again.");
+    },
+    onError :(error)=>{
+      alert(error.message);
     }
+  })
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    mutate();
   };
   
   return <div className="d-flex justify-content-center mt-5">

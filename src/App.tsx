@@ -25,15 +25,17 @@ function App() {
     date : new Date(),
     products : [],
     __v : 0
-});
-
+  });
+  
   const [isLoggedIn,setIsLoggedIn] = useState<boolean>(false);
   const [isAdmin,setIsAdmin] = useState<boolean>(false)
   const [categoryData, setCategoryData] = useState<string[]>([])
+  const [username, setUsername] = useState<string>("");
 
   const handleLogin = (token:string | null ,username:string)=>{
       if(token!==null){
           setIsLoggedIn(true);
+          setUsername(username);
           if(username === "donero"){
             setIsAdmin(true);
           }
@@ -76,9 +78,6 @@ function App() {
     if(catData) setCategoryData(catData);
   },[productData,cartData,catData]);
 
-  
-
-
   return (
     <Container fluid>
       <Router>
@@ -91,7 +90,7 @@ function App() {
               <Route path="/login" element={<Login handleLogin={handleLogin}/>} />
               <Route path = "/logout" element={<Logout handleLogout={handleLogOut} />} />
 
-              <Route path="/" element={isLoggedIn ? <Home categoryData = {categoryData}/> : <Navigate to="/login" replace />} />
+              <Route path="/" element={isLoggedIn ? <Home username={username} categoryData = {categoryData}/> : <Navigate to="/login" replace />} />
 
               
               <Route element={<UserAuth isUserAuth={isLoggedIn} />}>

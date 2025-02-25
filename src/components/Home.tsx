@@ -7,9 +7,10 @@ import { ICartProducts } from "../utils/CartAPI";
 
 interface IHomeProps{
   categoryData : string[];
+  username : string;
 }
 
-const Home = ({categoryData}:IHomeProps) => {
+const Home = ({categoryData,username}:IHomeProps) => {
   const productContext = useContext(AllProductContext);
   const cartContext = useContext(CartContext) ?? { cart: { products: [] }, cartDispatch: () => {} };
 
@@ -101,7 +102,8 @@ const Home = ({categoryData}:IHomeProps) => {
       <Row>
        
         <Col md={8}>
-          <h3>Products</h3>
+          <h3>Welcome {username} </h3>
+          <br />
           <Dropdown className="mb-3">
             <Dropdown.Toggle variant="primary">Select Category</Dropdown.Toggle>
             <Dropdown.Menu>

@@ -45,6 +45,7 @@ export const addToCart = async(userId : number, prodData : ICartProducts) =>{
         const responseData = await response.data;
         const responseStatus = response.status;
         console.log(responseData, responseStatus);
+        return responseData;
     }
     catch(err){
         console.error(err);
@@ -62,7 +63,7 @@ export const updateCart = async(userId:number , prodData : ICartProducts)=>{
         const responseStatus = response.status;
 
         console.log(responseData, responseStatus);
-
+        return responseData;
     }
     catch(err){
         console.error(err);
