@@ -47,8 +47,9 @@ const Home = ({categoryData,username}:IHomeProps) => {
   }
 
   const handleAddToCart = (userId: number, product: ICartProducts) => {
-    if(cart.products?.find((prod)=>prod.productId===product.productId)){
-      handleUpdateCart(1, { productId: product.productId, quantity: product.quantity + 1 })
+    const existingProduct = cart.products?.find((prod)=>prod.productId === product.productId);
+    if(existingProduct){
+      handleUpdateCart(userId, { productId: product.productId, quantity: existingProduct.quantity + 1 })
     }
     else{
       cartDispatch({ type: "AddToCart", userId, newProd: product });
