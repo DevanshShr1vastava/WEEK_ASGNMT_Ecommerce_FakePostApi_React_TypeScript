@@ -1,50 +1,50 @@
-# React + TypeScript + Vite
+##### FakeStoreAPI E-Commerce Application
+- Built using typescript, react
+- additional important features utilizing contextAPI and useQuery (from tanStack )
+- Separate admin and normal user features
+- stateful application
+- no localstorage utilized
+- users can view products and add products to cart and manage cart 
+- admins can modify products, add products along with above features
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### Demonstrations
 
-Currently, two official plugins are available:
+##### Login 
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+![ECommerceStuff_LoginStuff-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/46e30c42-cfa5-4642-b11b-2bb53f8ef53a)
 
-## Expanding the ESLint configuration
+##### UI Demo Category Filter Home regular user
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+![ECommerceStuff_UI_Category_Home-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/4f30af44-e3ef-49cd-b7ec-bdcf405dc3d6)
 
-- Configure the top-level `parserOptions` property like this:
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+#### UI Demo Category Filter Admin Page 
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+![ECommerceStuff_UI_Category_HomeAdmin-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/7b3484e0-7998-4447-8ec0-9c7b8d93be18)
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+#### UI Demo Home Page Product Show
+
+![ECommerceStuff_UI_ShowProduct-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/c5d47c05-fc66-47af-874f-477a21bf4c06)
+
+
+#### UI Demo Cart Manipulation
+
+![ECommerceStuff_UI_Cart_manipulation-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/ea6acc5a-c7e6-4258-8466-7534a8e0b8b4)
+
+
+#### UI Demo Admin Edit Products
+
+![ECommerceStuff_Admin_Edit-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/ec24fb31-70dd-4182-b378-94b1932514b9)
+
+
+#### UI Demo Admin Delete Products
+
+![ECommerceStuff_admin_Delete-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/bc520a09-84fa-4849-bd07-9b1a5701b8c0)
+
+
+#### UI Demo Admin Add products
+
+![ECommerceStuff_Admin_Add_product-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/3a3409bb-017d-49ac-8d17-ac42f03ffcfb)
+
+
